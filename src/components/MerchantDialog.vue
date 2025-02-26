@@ -1,6 +1,6 @@
 <template>
   <DialogModal v-model="show">
-    <div class="bg-gray-900 border border-white text-white mt-20 mx-6 px-4 py-8">
+    <div class="max-w-[375px] bg-gray-900 border border-white text-white px-4 py-8">
       <h3 class="text-3xl mb-8 text-center">You have found a merchant!</h3>
       <div class="flex flex-col items-center gap-4 text-center">
         <template v-if="!props.game.currentWeapon">
@@ -11,6 +11,7 @@
           <p>Would you like to sell your weapon?</p>
           <p class="text-gray-300 italic">(You will heal {{ potentialHeartsToHeal }} health)</p>
           <button class="btn" @click="sell">Sell</button>
+          <button class="btn bg-cyan-600 active:bg-cyan-800" @click="pass">Move On</button>
         </template>
         <button class="btn bg-red-400 active:bg-red-600 mt-8" @click="show = false">Back</button>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <DialogModal v-model="show">
-    <div class="bg-gray-900 border border-white text-white mt-20 mx-6 px-4 py-8">
+    <div class="max-w-[375px] bg-gray-900 border border-white text-white px-4 py-8">
       <h3 class="text-3xl mb-8 text-center">Choose Your Battle</h3>
       <div class="flex justify-evenly flex-wrap">
         <div>
@@ -51,11 +51,11 @@ const show = defineModel<boolean>();
 const withWeaponDamage = computed(() => {
   if (props.cardIdx === null) return 0;
   if (!props.game.currentWeapon) return withHandsDamage.value;
-  return Math.max(0, props.game.currentRoom[props.cardIdx].value - props.game.currentWeapon.value);
+  return Math.max(0, props.game.currentRoom[props.cardIdx]?.value - props.game.currentWeapon.value);
 });
 const withHandsDamage = computed(() => {
   if (props.cardIdx === null) return 0;
-  return props.game.currentRoom[props.cardIdx].value;
+  return props.game.currentRoom[props.cardIdx]?.value;
 });
 
 function pickWeapon() {

@@ -1,6 +1,18 @@
 import { CardValue, newRandomDeck, PlayingCard, Suit, type Deck } from '@/lib/CardDeck';
+import { CONSTANTS } from '@/lib/Constants';
 
 export class GameState {
+  static storableProperties: (keyof GameState)[] = [
+    'health',
+    'lastRanRoomNumber',
+    'deck',
+    'discardPile',
+    'currentRoom',
+    'roomNumber',
+    'currentWeapon',
+    'weaponLastFought',
+  ];
+
   health: number;
   lastRanRoomNumber: number;
   deck: Deck;
@@ -23,7 +35,24 @@ export class GameState {
     this.callbacks = {};
   }
 
-  get canRun() {
+  static FromJSONString(str: string): GameState {
+    const obj = JSON.parse(str);
+    const game = new GameState();
+    GameState.storableProperties.forEach((prop) => {
+      if (obj[prop] != undefined) game[prop] = obj[prop];
+    });
+    return game;
+  }
+
+  toJSONString(): string {
+    const obj: Record<string, any> = {};
+    GameState.storableProperties.forEach((prop) => {
+      obj[prop] = this[prop];
+    });
+    return JSON.stringify(obj);
+  }
+
+  canRun() {
     return this.roomNumber > this.lastRanRoomNumber + 1 && this.currentRoom.length == 4;
   }
 
@@ -35,7 +64,7 @@ export class GameState {
   }
 
   runFromRoom() {
-    if (!this.canRun) return;
+    if (!this.canRun()) return;
     this.deck.push(...this.currentRoom);
     this.currentRoom = [];
     this.lastRanRoomNumber = this.roomNumber;
@@ -59,11 +88,15 @@ export class GameState {
     if (!card) return;
 
     if ([Suit.CLUBS, Suit.SPADES].includes(card.suit)) {
-      if (options?.useWeapon) this.fightWithWeapon(card);
-      else this.fightWithFists(card);
+      if (options?.useWeapon) {
+        this.fightWithWeapon(card);
+      } else {
+        this.fightWithFists(card);
+      }
     } else if ([Suit.DIAMONDS, Suit.HEARTS].includes(card.suit) && CardValue.JACK === card.value) {
-      if (options?.useWeapon) this.sellToMerchant(card);
-      // else we just pass
+      if (options?.useWeapon) {
+        this.sellToMerchant(card);
+      }
     } else if (Suit.DIAMONDS === card.suit) {
       this.equipWeapon(card);
     } else if (Suit.HEARTS === card.suit) {
@@ -83,19 +116,21 @@ export class GameState {
       this.gameWin();
     }
 
-    // TODO at this point we would save state
+    localStorage.setItem(CONSTANTS.STORAGE_KEYS.CURRENT_GAME, this.toJSONString());
   }
 
   gameWin() {
     if (typeof this.callbacks.onWin === 'function') {
       this.callbacks.onWin();
     }
+    localStorage.removeItem(CONSTANTS.STORAGE_KEYS.CURRENT_GAME);
   }
 
   gameLose() {
     if (typeof this.callbacks.onLose === 'function') {
       this.callbacks.onLose();
     }
+    localStorage.removeItem(CONSTANTS.STORAGE_KEYS.CURRENT_GAME);
   }
 
   private equipWeapon(card: PlayingCard | null) {
@@ -133,7 +168,7 @@ export class GameState {
 
   private sellToMerchant(card: PlayingCard) {
     if (!this.currentWeapon) return;
-    this.health += this.checkWeaponValue();
+    this.health = Math.min(20, this.health + this.checkWeaponValue());
     this.equipWeapon(null);
   }
 }

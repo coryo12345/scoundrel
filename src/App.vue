@@ -1,6 +1,6 @@
 <template>
   <main class="px-4 py-2 bg-slate-800">
-    <div class="max-w-[375px] mx-auto">
+    <div class="max-w-[375px] mx-auto h-full">
       <RouterView />
     </div>
   </main>
@@ -12,15 +12,13 @@
 </template>
 
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
-import { onMounted, useTemplateRef } from 'vue';
 import type { PWAInstallElement } from '@khmyznikov/pwa-install';
+import { useTemplateRef } from 'vue';
+import { RouterView } from 'vue-router';
+
+// TODO - animations!!!!
 
 const pwainstall = useTemplateRef<PWAInstallElement>('pwainstall');
-
-// onMounted(() => {
-//   pwainstall.value?.showDialog(true);
-// });
 </script>
 
 <style scoped>

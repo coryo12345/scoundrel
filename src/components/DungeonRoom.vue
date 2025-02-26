@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="grid grid-cols-2 gap-4 justify-items-center mb-4 h-80">
+    <div class="grid grid-cols-2 gap-4 justify-items-center mb-4 h-80" ref="card-container">
       <PlayingCard
         v-for="(card, idx) in props.game.currentRoom"
         :key="`${card.suit}-${card.value}`"
@@ -12,7 +12,7 @@
     </div>
     <div class="flex justify-center h-12">
       <button
-        v-if="props.game.canRun"
+        v-if="props.game.canRun()"
         class="btn bg-red-500 active:bg-red-700"
         @click="props.game.runFromRoom()"
       >

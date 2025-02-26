@@ -1,7 +1,8 @@
 <template>
   <section>
-    <div v-if="props.game.currentWeapon" class="grid grid-cols-2 justify-items-center">
-      <div>
+    <div class="grid grid-cols-2 justify-items-center">
+      <!-- TODO animate -->
+      <div v-if="props.game.currentWeapon">
         <p class="text-center">Current Weapon</p>
         <PlayingCard :card="props.game.currentWeapon" class="mx-3" />
       </div>
@@ -10,7 +11,7 @@
         <PlayingCard :card="props.game.weaponLastFought" class="mx-3" />
       </div>
     </div>
-    <p v-else class="text-center">No Weapon Equipped</p>
+    <p v-if="!props.game.currentWeapon" class="text-center">No Weapon Equipped</p>
   </section>
 </template>
 

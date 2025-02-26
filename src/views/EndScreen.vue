@@ -5,7 +5,7 @@
     <RouterLink :to="{ name: 'home' }" class="btn bg-cyan-600 active:bg-cyan-800 mb-2">
       Go Home
     </RouterLink>
-    <RouterLink :to="{ name: 'game' }" class="btn mb-2"> Play Again </RouterLink>
+    <RouterLink :to="{ name: 'newgame' }" class="btn mb-2"> Play Again </RouterLink>
   </section>
 </template>
 
