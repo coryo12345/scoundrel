@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Grechen';
+  src: url('/font/GrechenFuemen-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Teko';
+  src: url('/font/Teko-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HennyPenny';
+  src: url('/font/HennyPenny-Regular.ttf') format('truetype');
+}
+
+@import 'tailwindcss';
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 bg-teal-500 active:bg-teal-700 text-gray-900 rounded text-center text-xl font-bold tracking-wide font-[Teko] cursor-pointer;
+  }
+}
