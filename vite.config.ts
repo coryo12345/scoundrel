@@ -19,6 +19,11 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
     VitePWA({
+      includeAssets: [
+        'favicon.ico',
+        'font/GrechenFuemen-Regular.ttf',
+        'font/Teko-VariableFont_wght.ttf',
+      ],
       registerType: 'autoUpdate',
       devOptions: { enabled: true },
       manifest: {
