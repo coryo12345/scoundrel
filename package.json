@@ -9,9 +9,11 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg"
   },
   "dependencies": {
+    "@khmyznikov/pwa-install": "^0.5.3",
     "tailwindcss": "^4.0.8",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
@@ -20,6 +22,7 @@
     "@tailwindcss/vite": "^4.0.8",
     "@tsconfig/node22": "^22.0.0",
     "@types/node": "^22.13.4",
+    "@vite-pwa/assets-generator": "^0.2.6",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vitejs/plugin-vue-jsx": "^4.1.1",
     "@vue/tsconfig": "^0.7.0",
@@ -28,6 +31,7 @@
     "prettier": "^3.5.1",
     "typescript": "~5.7.3",
     "vite": "^6.1.0",
+    "vite-plugin-pwa": "^0.21.1",
     "vite-plugin-vue-devtools": "^7.7.2",
     "vue-tsc": "^2.2.2"
   }

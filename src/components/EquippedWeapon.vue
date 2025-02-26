@@ -10,7 +10,7 @@
         <PlayingCard :card="props.game.weaponLastFought" class="mx-3" />
       </div>
     </div>
-    <p v-else>No Weapon Equipped</p>
+    <p v-else class="text-center">No Weapon Equipped</p>
   </section>
 </template>
 
