@@ -30,7 +30,7 @@ export default defineConfig({
         name: 'Scoundrel',
         short_name: 'Scoundrel',
         description: 'A solo dungeon crawl',
-        theme_color: '#ffffff',
+        theme_color: '#1D293D',
         icons: [
           {
             src: 'pwa-192x192.png',
