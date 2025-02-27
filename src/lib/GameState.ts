@@ -112,8 +112,12 @@ export class GameState {
       this.dealRoom();
     }
 
+    if (this.checkLoss()) {
+      return this.gameLose();
+    }
+
     if (this.currentRoom.length === 0) {
-      this.gameWin();
+      return this.gameWin();
     }
 
     localStorage.setItem(CONSTANTS.STORAGE_KEYS.CURRENT_GAME, this.toJSONString());
@@ -152,18 +156,14 @@ export class GameState {
       this.discardPile.push(this.weaponLastFought);
     }
     this.weaponLastFought = card;
-    this.checkLoss();
   }
 
   private fightWithFists(card: PlayingCard) {
     this.health -= card.value;
-    this.checkLoss();
   }
 
   private checkLoss() {
-    if (this.health <= 0) {
-      this.gameLose();
-    }
+    return this.health <= 0;
   }
 
   private sellToMerchant(card: PlayingCard) {

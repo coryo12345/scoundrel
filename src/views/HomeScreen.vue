@@ -24,7 +24,7 @@ import { onMounted, ref } from 'vue';
 const hasSavedGame = ref(false);
 
 onMounted(() => {
-  if (localStorage.getItem(CONSTANTS.STORAGE_KEYS.CURRENT_GAME)) {
+  if (localStorage.getItem(CONSTANTS.STORAGE_KEYS.CURRENT_GAME)?.length) {
     hasSavedGame.value = true;
   }
 });
