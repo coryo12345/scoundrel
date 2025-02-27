@@ -26,7 +26,7 @@ const route = useRoute();
 const router = useRouter();
 
 const game = ref<GameState>(new GameState());
-const currentGame = computed(() => game.value as GameState);
+const currentGame = computed(() => game.value as unknown as GameState);
 
 onMounted(() => {
   if (route.query['continue'] == 'true') {
@@ -41,6 +41,7 @@ onMounted(() => {
   }
   game.value.callbacks.onWin = () => router.push({ name: 'end', query: { win: 'true' } });
   game.value.callbacks.onLose = () => router.push({ name: 'end' });
+  game.value.forceRenderAllCards();
 });
 </script>
 

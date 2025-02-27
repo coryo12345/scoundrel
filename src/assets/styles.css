@@ -17,6 +17,6 @@
 
 @layer components {
   .btn {
-    @apply px-4 py-2 bg-teal-500 active:bg-teal-700 text-gray-900 rounded text-center text-xl font-bold tracking-wide font-[Teko] cursor-pointer;
+    @apply px-4 py-2 bg-teal-500 active:bg-teal-700 text-gray-900 rounded text-center text-xl font-medium tracking-wide font-[Teko] cursor-pointer;
   }
 }

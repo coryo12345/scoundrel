@@ -4,30 +4,24 @@
     :style="containerStyle"
   >
     <span class="absolute top-1 left-2 text-black text-xl font-serif">{{ num }}</span>
-    <span class="absolute bottom-1 right-2 rotate-180 text-black text-xl font-serif">{{
-      num
-    }}</span>
-    <SuitIcon :width="props.size" :height="props.size" />
+    <span class="absolute bottom-1 right-2 rotate-180 text-black text-xl font-serif">
+      {{ num }}
+    </span>
+    <SuitIcon :width="CONSTANTS.CARD_SIZE" :height="CONSTANTS.CARD_SIZE" />
   </div>
 </template>
 
 <script setup lang="tsx">
 import { getInfoFromValue, Suit, type PlayingCard } from '@/lib/CardDeck';
+import { CONSTANTS } from '@/lib/Constants';
 import { computed } from 'vue';
 
-const props = withDefaults(
-  defineProps<{
-    card: PlayingCard;
-    size?: number | string;
-  }>(),
-  {
-    size: 40,
-  },
-);
+const props = defineProps<{
+  card: PlayingCard;
+}>();
 
 const containerStyle = computed(
-  () =>
-    `width: ${parseFloat(props.size.toString()) * 2.25}px; height: ${parseFloat(props.size.toString()) * 3.5}px;`,
+  () => `width: ${CONSTANTS.CARD_SIZE * 2.25}px; height: ${CONSTANTS.CARD_SIZE * 3.5}px;`,
 );
 
 const num = computed(() => getInfoFromValue(props.card.value)?.abbr ?? '');

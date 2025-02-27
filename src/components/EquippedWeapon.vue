@@ -1,23 +1,29 @@
 <template>
-  <section>
-    <div class="grid grid-cols-2 justify-items-center">
-      <!-- TODO animate -->
-      <div v-if="props.game.currentWeapon">
-        <p class="text-center">Current Weapon</p>
-        <PlayingCard :card="props.game.currentWeapon" class="mx-3" />
+  <section class="relative">
+    <div class="flex items-center justify-between flex-wrap">
+      <div class="flex-1/2">
+        <div class="h-8">
+          <p v-if="props.game.currentWeapon" class="text-center">Current Weapon</p>
+        </div>
+        <PlayingCardContainer :id="RenderSlot.WEAPON" class="mx-auto" />
       </div>
-      <div v-if="props.game.weaponLastFought">
-        <p class="text-center">Last Fought</p>
-        <PlayingCard :card="props.game.weaponLastFought" class="mx-3" />
+      <div class="flex-1/2">
+        <div class="h-8">
+          <p v-if="props.game.weaponLastFought" class="text-center">Last Fought</p>
+        </div>
+        <PlayingCardContainer :id="RenderSlot.WEAPON_LAST_FOUGHT" class="mx-auto" />
       </div>
     </div>
-    <p v-if="!props.game.currentWeapon" class="text-center">No Weapon Equipped</p>
+    <p v-if="!props.game.currentWeapon" class="absolute top-0 w-full text-center">
+      No Weapon Equipped
+    </p>
   </section>
 </template>
 
 <script setup lang="ts">
-import PlayingCard from '@/components/PlayingCard.vue';
+import PlayingCardContainer from '@/components/PlayingCardContainer.vue';
 import { GameState } from '@/lib/GameState';
+import { RenderSlot } from '@/lib/RenderedCardStack';
 
 const props = defineProps<{
   game: GameState;

@@ -1,14 +1,14 @@
 <template>
   <section>
     <div class="grid grid-cols-2 gap-4 justify-items-center mb-4 h-80" ref="card-container">
-      <PlayingCard
-        v-for="(card, idx) in props.game.currentRoom"
-        :key="`${card.suit}-${card.value}`"
-        :card="card"
-        class="h-36 cursor-pointer"
-        role="button"
+      <PlayingCardContainer
+        v-for="(id, idx) in slotIds"
+        :id="id.id"
+        class="h-36 z-50"
+        :class="{ 'cursor-pointer': id.hasCard }"
+        :role="id.hasCard ? 'button' : undefined"
         @click="handleCardAction(idx)"
-      ></PlayingCard>
+      ></PlayingCardContainer>
     </div>
     <div class="flex justify-center h-12">
       <button
@@ -25,16 +25,19 @@
       :game="props.game"
       :card-idx="merchantConfirm.roomIdx"
     />
+    <CardStack :game="props.game" />
   </section>
 </template>
 
 <script setup lang="ts">
+import CardStack from '@/components/CardStack.vue';
 import FightDialog from '@/components/FightDialog.vue';
 import MerchantDialog from '@/components/MerchantDialog.vue';
-import PlayingCard from '@/components/PlayingCard.vue';
+import PlayingCardContainer from '@/components/PlayingCardContainer.vue';
 import { CardValue, Suit } from '@/lib/CardDeck';
 import { GameState } from '@/lib/GameState';
-import { reactive } from 'vue';
+import { RenderSlot } from '@/lib/RenderedCardStack';
+import { computed, reactive } from 'vue';
 
 const props = defineProps<{
   game: GameState;
@@ -49,6 +52,13 @@ const merchantConfirm = reactive({
   show: false,
   roomIdx: null as number | null,
 });
+
+const slotIds = computed(() => [
+  { id: RenderSlot.ROOM1, hasCard: !!props.game.currentRoom[0] },
+  { id: RenderSlot.ROOM2, hasCard: !!props.game.currentRoom[1] },
+  { id: RenderSlot.ROOM3, hasCard: !!props.game.currentRoom[2] },
+  { id: RenderSlot.ROOM4, hasCard: !!props.game.currentRoom[3] },
+]);
 
 function handleCardAction(index: number) {
   const card = props.game.currentRoom[index];

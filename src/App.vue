@@ -16,8 +16,6 @@ import type { PWAInstallElement } from '@khmyznikov/pwa-install';
 import { useTemplateRef } from 'vue';
 import { RouterView } from 'vue-router';
 
-// TODO - animations!!!!
-
 const pwainstall = useTemplateRef<PWAInstallElement>('pwainstall');
 </script>
 

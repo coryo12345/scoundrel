@@ -79,11 +79,15 @@ export class PlayingCard {
     this.suit = suit;
     this.value = value;
   }
+
+  equals(other: PlayingCard): boolean {
+    return this.suit === other.suit && this.value === other.value;
+  }
 }
 
 export type Deck = PlayingCard[];
 
-export function newRandomDeck(includeMerchants = false): Deck {
+export function newDeck(includeMerchants = false): Deck {
   const deck: Deck = [];
 
   [Suit.CLUBS, Suit.SPADES].forEach((s) => {
@@ -103,7 +107,11 @@ export function newRandomDeck(includeMerchants = false): Deck {
       });
   });
 
-  return shuffleDeck(deck);
+  return deck;
+}
+
+export function newRandomDeck(includeMerchants = false): Deck {
+  return shuffleDeck(newDeck(includeMerchants));
 }
 
 /* Randomize array in-place using Durstenfeld shuffle algorithm */
