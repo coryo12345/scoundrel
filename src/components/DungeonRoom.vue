@@ -64,10 +64,7 @@ function handleCardAction(index: number) {
   const card = props.game.currentRoom[index];
   if (!card) return;
 
-  if (
-    (card.suit == Suit.CLUBS || card.suit == Suit.SPADES) &&
-    props.game.canFightWithWeapon(card)
-  ) {
+  if (card.suit == Suit.CLUBS || card.suit == Suit.SPADES) {
     fightConfirm.roomIdx = index;
     fightConfirm.show = true;
   } else if (

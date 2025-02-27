@@ -25,8 +25,6 @@ const props = defineProps<{
   game: GameState;
 }>();
 
-// TODO the cards shouldn't animate when moving back at the start of the game
-
 const cardStack = useCardStack();
 
 onMounted(() => {

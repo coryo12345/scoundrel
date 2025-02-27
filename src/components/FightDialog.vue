@@ -1,9 +1,9 @@
 <template>
   <DialogModal v-model="show">
-    <div class="max-w-[375px] bg-gray-900 border border-white text-white px-4 py-8">
-      <h3 class="text-3xl mb-8 text-center">Choose Your Battle</h3>
+    <div class="max-w-[375px] min-w-[250px] bg-gray-900 border border-white text-white px-4 py-8">
+      <h3 class="text-3xl mb-8 text-center">{{ weaponOption ? 'Choose Your ' : '' }}Battle</h3>
       <div class="flex justify-evenly flex-wrap gap-4">
-        <div>
+        <div v-if="weaponOption">
           <button class="cursor-pointer text-center" @click="pickWeapon">
             <div class="w-30 h-30 bg-yellow-50 flex justify-center items-center mx-auto">
               <SwordIcon class="max-w-20 max-h-20"></SwordIcon>
@@ -47,6 +47,13 @@ const props = defineProps<{
   cardIdx: number | null;
 }>();
 const show = defineModel<boolean>();
+
+const weaponOption = computed(() => {
+  if (props.cardIdx === null) return false;
+  const card = props.game.currentRoom[props.cardIdx];
+  if (!card) return false;
+  return props.game.canFightWithWeapon(card);
+});
 
 const withWeaponDamage = computed(() => {
   if (props.cardIdx === null) return 0;
