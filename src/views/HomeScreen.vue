@@ -1,5 +1,6 @@
 <template>
-  <div class="flex flex-col justify-center items-center h-full py-12">
+  <div class="flex flex-col justify-center items-center min-h-[100vh] py-12">
+    <div class="flex-1"></div>
     <h2 class="text-6xl text-center text-white font-[Grechen]">Scoundrel</h2>
     <div class="flex-1"></div>
     <RouterLink
@@ -13,7 +14,7 @@
     <RouterLink :to="{ name: 'rules' }" class="btn bg-cyan-600 active:bg-cyan-800">
       Rules
     </RouterLink>
-    <div style="flex: 1 0 auto"></div>
+    <div class="flex-1/2"></div>
   </div>
 </template>
 

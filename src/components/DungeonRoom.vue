@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="grid grid-cols-2 gap-4 justify-items-center mb-4 h-80" ref="card-container">
+    <div class="grid grid-cols-2 gap-4 justify-items-center mb-2 h-80" ref="card-container">
       <PlayingCardContainer
         v-for="(id, idx) in slotIds"
         :id="id.id"

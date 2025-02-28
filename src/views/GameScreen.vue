@@ -1,8 +1,8 @@
 <template>
-  <div class="text-white font-[Teko] text-2xl flex flex-col gap-8 relative">
+  <div class="text-white font-[Teko] text-2xl flex flex-col gap-2 relative">
     <GameSummary :game="currentGame"></GameSummary>
     <DungeonRoom :game="currentGame"></DungeonRoom>
-    <EquippedWeapon :game="currentGame"></EquippedWeapon>
+    <EquippedWeapon :game="currentGame" class="mt-2"></EquippedWeapon>
     <button
       class="absolute top-0 right-0 cursor-pointer bg-gray-600 rounded-full w-8 h-8"
       title="Leave Game"

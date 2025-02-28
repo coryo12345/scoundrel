@@ -1,6 +1,6 @@
 <template>
   <main class="px-4 py-2 bg-slate-800">
-    <div class="max-w-[375px] mx-auto h-full">
+    <div class="max-w-[375px] mx-auto">
       <RouterView />
     </div>
   </main>
@@ -21,6 +21,6 @@ const pwainstall = useTemplateRef<PWAInstallElement>('pwainstall');
 
 <style scoped>
 main {
-  height: 100vh;
+  min-height: 100vh;
 }
 </style>
