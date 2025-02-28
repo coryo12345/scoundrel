@@ -1,7 +1,8 @@
 <template>
   <div class="flex flex-col justify-center items-center min-h-[100vh] py-12">
     <div class="flex-1"></div>
-    <h2 class="text-6xl text-center text-white font-[Grechen]">Scoundrel</h2>
+    <h2 class="text-7xl text-center text-white font-[Grechen]">Scoundrel</h2>
+    <p class="text-2xl text-gray-300 font-[Teko] mt-2">A card-based dungeon-crawling game</p>
     <div class="flex-1"></div>
     <RouterLink
       v-if="hasSavedGame"

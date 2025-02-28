@@ -10,7 +10,7 @@
 
     <div class="mx-auto text-white py-8 flex flex-col">
       <h1 class="text-4xl font-semibold text-center font-[Teko] text-yellow-400">Scoundrel</h1>
-      <p class="text-center text-gray-200 mt-1">A card-based dungeon-crawling game.</p>
+      <p class="text-center text-gray-200 mt-1">A card-based dungeon-crawling game</p>
 
       <section class="mt-6">
         <h2 class="text-3xl font-medium font-[Teko] text-blue-300">About</h2>
@@ -84,8 +84,8 @@
         </p>
         <p class="mt-2">
           When tapping a merchant, you will have the option to sell your currently equipped weapon
-          in exchange for health. If you have no weapon (or simply choose not to sell) - you can
-          pass, and the merchant will be discarded.
+          in exchange for health. If you have no weapon (or simply choose not to sell), you can pass
+          and the merchant will be discarded.
         </p>
         <p class="mt-2">
           If you have not fought any monsters with your current weapon, you gain health equal to
