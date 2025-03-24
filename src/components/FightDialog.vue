@@ -30,6 +30,7 @@
           class="bg-red-500 capitalize text-white rounded px-4 py-2 cursor-pointer active:bg-red-700"
           @click="show = false"
         >
+          <span class="text-2xl">🚫</span>
           Cancel
         </button>
       </div>

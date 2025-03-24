@@ -94,7 +94,10 @@
         </p>
       </section>
 
-      <RouterLink :to="{ name: 'home' }" class="btn mt-8"> Go Back </RouterLink>
+      <RouterLink :to="{ name: 'home' }" class="btn mt-8">
+        <span class="text-2xl">🚫</span>
+        Go Back
+      </RouterLink>
     </div>
   </div>
 </template>

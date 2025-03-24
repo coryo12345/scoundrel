@@ -5,15 +5,27 @@
       <div class="flex flex-col items-center gap-4 text-center">
         <template v-if="!props.game.currentWeapon">
           <p>You have no weapon to sell.</p>
-          <button class="btn" @click="pass">Continue</button>
+          <button class="btn" @click="pass">
+            <span class="text-2xl">☕️</span>
+            Continue
+          </button>
         </template>
         <template v-else>
           <p>Would you like to sell your weapon?</p>
           <p class="text-gray-300 italic">(You will heal {{ potentialHeartsToHeal }} health)</p>
-          <button class="btn" @click="sell">Sell</button>
-          <button class="btn bg-cyan-600 active:bg-cyan-800" @click="pass">Move On</button>
+          <button class="btn" @click="sell">
+            <span class="text-2xl">💰</span>
+            Sell
+          </button>
+          <button class="btn bg-cyan-600 active:bg-cyan-800" @click="pass">
+            <span class="text-2xl">🚶‍♂️</span>
+            Move On
+          </button>
         </template>
-        <button class="btn bg-red-400 active:bg-red-600 mt-8" @click="show = false">Back</button>
+        <button class="btn bg-red-400 active:bg-red-600 mt-8" @click="show = false">
+          <span class="text-2xl">🚫</span>
+          Back
+        </button>
       </div>
     </div>
   </DialogModal>

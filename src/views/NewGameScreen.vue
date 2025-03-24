@@ -12,8 +12,12 @@
       <ToggleSwitch v-model="includeMerchants" />
       <span class="text-3xl w-6">{{ includeMerchants ? 'Yes' : 'No' }}</span>
     </div>
-    <button class="btn mb-4" @click="enter">Face The Challenge</button>
+    <button class="btn mb-4" @click="enter">
+      <span class="text-2xl">⚔️</span>
+      Face The Challenge
+    </button>
     <RouterLink :to="{ name: 'home' }" class="btn bg-red-400 active:bg-red-600">
+      <span class="text-2xl">🚫</span>
       Go Back
     </RouterLink>
   </section>

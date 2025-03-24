@@ -3,9 +3,13 @@
     <h1 class="text-6xl text-center mb-12">{{ headerText }}</h1>
     <p class="text-4xl text-center mb-20">{{ text }}</p>
     <RouterLink :to="{ name: 'home' }" class="btn bg-cyan-600 active:bg-cyan-800 mb-2">
+      <span class="text-2xl">🏠</span>
       Go Home
     </RouterLink>
-    <RouterLink :to="{ name: 'newgame' }" class="btn mb-2"> Play Again </RouterLink>
+    <RouterLink :to="{ name: 'newgame' }" class="btn mb-2">
+      <span class="text-2xl">🔄</span>
+      Play Again
+    </RouterLink>
   </section>
 </template>
 

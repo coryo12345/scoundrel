@@ -16,6 +16,7 @@
         class="btn bg-red-500 active:bg-red-700"
         @click="props.game.runFromRoom()"
       >
+        <span class="text-2xl">🏃</span>
         Run From Room
       </button>
     </div>

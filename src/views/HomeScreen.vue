@@ -1,21 +1,44 @@
 <template>
-  <div class="flex flex-col justify-center items-center min-h-[100vh] py-12">
-    <div class="flex-1"></div>
-    <h2 class="text-7xl text-center text-white font-[Grechen]">Scoundrel</h2>
-    <p class="text-2xl text-gray-300 font-[Teko] mt-2">A card-based dungeon-crawling game</p>
-    <div class="flex-1"></div>
-    <RouterLink
-      v-if="hasSavedGame"
-      :to="{ name: 'game', query: { continue: 'true' } }"
-      class="btn bg-red-400 active:bg-red-600 mb-4"
-    >
-      Continue
-    </RouterLink>
-    <RouterLink :to="{ name: 'newgame' }" class="btn mb-4"> New Game </RouterLink>
-    <RouterLink :to="{ name: 'rules' }" class="btn bg-cyan-600 active:bg-cyan-800">
-      Rules
-    </RouterLink>
-    <div class="flex-1/2"></div>
+  <!-- Main content -->
+  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12">
+    <!-- Title section with animated glow -->
+    <div class="relative">
+      <h2 class="text-7xl text-center text-white font-[Grechen] animate-pulse-slow">Scoundrel</h2>
+      <div class="absolute inset-0 bg-red-500/20 blur-2xl animate-pulse-slow"></div>
+    </div>
+
+    <!-- Subtitle with animated underline -->
+    <p class="text-3xl text-gray-300 font-[Teko] mt-4 relative group">
+      A card-based dungeon-crawling game
+    </p>
+
+    <!-- Game buttons with hover effects -->
+    <div class="mt-12 space-y-6 w-full max-w-md">
+      <RouterLink
+        v-if="hasSavedGame"
+        :to="{ name: 'game', query: { continue: 'true' } }"
+        class="btn bg-red-500 hover:bg-red-600 active:bg-red-700"
+      >
+        <span class="text-2xl">🎮</span>
+        Continue Adventure
+      </RouterLink>
+
+      <RouterLink
+        :to="{ name: 'newgame' }"
+        class="btn bg-teal-500 hover:bg-teal-600 active:bg-teal-700"
+      >
+        <span class="text-2xl">✨</span>
+        Start New Quest
+      </RouterLink>
+
+      <RouterLink
+        :to="{ name: 'rules' }"
+        class="btn bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800"
+      >
+        <span class="text-2xl">📖</span>
+        Game Rules
+      </RouterLink>
+    </div>
   </div>
 </template>
 
@@ -33,8 +56,31 @@ onMounted(() => {
 </script>
 
 <style scoped>
-button,
-a {
-  width: 10em;
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(12deg);
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
 }
 </style>
